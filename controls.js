@@ -85,7 +85,7 @@ button.addEventListener("click", () => {
                                   .filter(field => !field.classList.contains("optional"))
 
 
-        alert("Merci de remplir tous les champs obligatoires")
+        alert("Merci de remplir tous les champs obligatoires pour que nous puissions traiter votre demande")
         
     }
 
