@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./style.css"/>
+    <title>Contact | Insee</title>
+
+    <script src="script.js" type="module" defer></script>
+</head>
+<body>
+    <div class="banner">
+
+    </div>
+
+    <form action="" id="form">
+
+        <div class="form-part">
+
+            <h2> Votre demande </h2>
+
+            <!-- CATEGORIE -->
+            <div class="form-group">
+
+                <label for="categorie"> Vous souhaitez <span class="mandatory"> * </span> : </label>
+
+                <div id="categorie" class="custom-select">
+
+                    <div class="box box-value" tabindex="0">
+                        <span>Choisissez une catégorie</span>
+                        <div class="button"> <i class="fa fas fa-chevron-up"></i> </div>
+                        <i class="fas fa fa-check-circle"></i>
+                        <i class="fas fa fa-times-circle"></i>
+                    </div>
+
+                    <ul>
+                        <li>Faire une demande d'information statistique</li>
+                        <li>Obtenir des informations sur une enquête en cours</li>
+                        <li>Signaler un dysfonctionnement</li>
+                        <li>Faire une autre demande</li>
+                        <li>Déposer une réclamation</li>
+                        <li>Faire une suggestion</li>
+                    </ul>
+
+                </div>
+                
+            </div>
+                 
+            <!-- DYSFONCTIONNEMENT - PAGE PROBLEME -->
+            <div class="form-group form-group--dysfonctionnement page subfilter">
+
+                <label for="dysfonctionnement"> Adresse de la page ayant un problème <span class="mandatory"> * </span> : </label>
+
+                <div id="dysfonctionnement" class="custom-select">
+                    <input type="text" name="dysfonctionnement" id="dysfonctionnement" placeholder="Adresse de la page" autocomplete="off">
+                    <div class="error-message error-message--mail"> Vous devez indiquer une page commençant par https://www.insee.fr/ </div>
+                    <i class="fas fa fa-check-circle"></i>
+                    <i class="fas fa fa-times-circle"></i>
+                </div> 
+                
+            </div>
+
+            <!-- OBTENIR INFORMATIONS ENQUÊTE - NOM ENQUÊTE -->
+            <div class="form-group form-group--informations enquete subfilter">
+
+                <label for="informations-enquete"> Nom de l'enquête <span class="mandatory"> * </span> : </label>
+
+                <div id="informations-enquete" class="custom-select">
+                    <input type="text" name="informations-enquete" id="informations-enquete" placeholder="Nom de l'enquête" autocomplete="off">
+                    <i class="fas fa fa-check-circle"></i>
+                    <i class="fas fa fa-times-circle"></i>
+                </div> 
+                
+            </div>
+
+            <!-- OBTENIR INFORMATIONS ENQUÊTE - IDENTIFIANT -->
+            <div class="form-group form-group--informations identifiant optional subfilter">
+
+                <label for="informations-identifiant"> Votre identifiant (si vous en disposez) : </label>
+
+                <div id="informations-identifiant" class="custom-select">
+                    <input type="text" name="informations-identifiant" id="informations-identifiant" placeholder="Votre identifiant">
+                    <i class="fas fa fa-check-circle"></i>
+                    <i class="fas fa fa-times-circle"></i>
+                </div> 
+                
+            </div>
+
+            <!-- MESSAGE -->
+            <div class="form-group form-group--message">
+
+                <label for="message"> Votre message <span class="mandatory"> * </span> : </label>
+
+                <textarea name="message" id="message" rows="6"></textarea>
+                <p class="remaining"> 0 caractère sur 2 000 caractères autorisés </p>
+
+            </div>
+
+        </div>
+
+        <div class="form-part">
+
+            <h2> Vos coordonnées </h2>
+
+            <!-- MAIL -->
+            <div class="form-group from-group--email">
+
+                <label for="email"> Votre adresse mail <span class="mandatory"> * </span> : </label>
+
+                <div id="email">
+                    <input type="text" class="email" name="email" id="email" placeholder="Votre adresse mail">
+                    <div class="error-message error-message--mail"> Votre adresse mail doit être au format suivant : exemple@domaine.com </div>
+                    <i class="fas fa fa-check-circle"></i>
+                    <i class="fas fa fa-times-circle"></i>
+                </div> 
+                
+            </div>
+
+            <!-- MAIL CONFIRMATION-->
+            <div class="form-group from-group--email-confirmation">
+
+                <label for="email-confirmation"> Confirmez votre adresse mail <span class="mandatory"> * </span> : </label>
+
+                <div id="email-confirmation">
+                    <input type="text"  class="email" name="email-confirmation" id="email-confirmation" placeholder="Confirmez votre adresse mail">
+                    <div class="error-message error-message--mail-similar"> Les deux adresses ne correspondent pas </div>
+                    <i class="fas fa fa-check-circle"></i>
+                    <i class="fas fa fa-times-circle"></i>
+                </div> 
+                
+            </div>
+
+            <!-- TELEPHONE -->
+            <div class="form-group from-group--telephone">
+
+                <label for="telephone"> Votre numéro de téléphone : </label>
+
+                <div id="telephone" class="custom-select">
+                    <input type="text" name="telephone" id="telephone" placeholder="Votre numéro de téléphone" autocomplete="tel">
+                    <div class="error-message"> Le numéro de téléphone renseigné est invalide </div>
+                    <i class="fas fa fa-check-circle"></i>
+                    <i class="fas fa fa-times-circle"></i>
+                </div> 
+                
+            </div>
+
+            <!-- IDENTITE -->
+            <div class="form-group from-group--identite">
+
+                <label for="identite"> Vous êtes <span class="mandatory"> * </span> : </label>
+
+                <div id="identite" class="custom-select">
+
+                    <div class="box-value" tabindex="0">
+                        <span>Choisissez un type de public</span>
+                        <div class="button"> <i class="fa fas fa-chevron-up"></i> </div>
+                        <i class="fas fa fa-check-circle"></i>
+                        <i class="fas fa fa-times-circle"></i>
+                    </div>
+
+                    <ul>
+                        <li> Une administration, une collectivité locale, un service public </li>
+                        <li> Une entreprise </li>
+                        <li> Une association </li>
+                        <li> Un enseignant ou un étudiant </li>
+                        <li> Un particulier </li>
+                        <li> Autre </li>
+                    </ul>
+
+                </div> 
+                
+            </div>
+
+            <!-- DEPARTEMENT -->
+            <div class="form-group from-group--departement">
+
+                <label for="departement"> Département de votre résidence ou de votre implantation <span class="mandatory"> * </span> : </label>
+
+                <div id="departement" class="custom-select">
+
+                    <div class="box-value" tabindex="0">
+                        <span>Choisissez votre département</span>
+                        <div class="button"> <i class="fa fas fa-chevron-up"></i> </div>
+                        <i class="fas fa fa-check-circle"></i>
+                        <i class="fas fa fa-times-circle"></i>
+                    </div>
+
+                    <ul class="long">
+                        <li>Etranger</li>
+                        <li>Ain</li>
+                        <li>Aisne</li>
+                        <li>Allier</li>
+                        <li>Alpes-Maritimes</li>
+                        <li>Alpes-de-Haute-Provence</li>
+                        <li>Ardennes</li>
+                        <li>Ardèche</li>
+                        <li>Ariège</li>
+                        <li>Aube</li>
+                        <li>Aude</li>
+                        <li>Aveyron</li>
+                        <li>Bas-Rhin</li>
+                        <li>Bouches-du-Rhône</li>
+                        <li>Calvados</li>
+                        <li>Cantal</li>
+                        <li>Charente</li>
+                        <li>Charente-Maritime</li>
+                        <li>Cher</li>
+                        <li>Corrèze</li>
+                        <li>Corse-du-Sud</li>
+                        <li>Creuse</li>
+                        <li>Côte-d'Or</li>
+                        <li>Côtes-d'Armor</li>
+                        <li>Deux-Sèvres</li>
+                        <li>Dordogne</li>
+                        <li>Doubs</li>
+                        <li>Drôme</li>
+                        <li>Essonne</li>
+                        <li>Eure</li>
+                        <li>Eure-et-Loir</li>
+                        <li>Finistère</li>
+                        <li>Gard</li>
+                        <li>Gers</li>
+                        <li>Gironde</li>
+                        <li>Guadeloupe</li>
+                        <li>Guyane</li>
+                        <li>Haut-Rhin</li>
+                        <li>Haute-Corse</li>
+                        <li>Haute-Garonne</li>
+                        <li>Haute-Loire</li>
+                        <li>Haute-Marne</li>
+                        <li>Haute-Savoie</li>
+                        <li>Haute-Saône</li>
+                        <li>Haute-Vienne</li>
+                        <li>Hautes-Alpes</li>
+                        <li>Hautes-Pyrénées</li>
+                        <li>Hauts-de-Seine</li>
+                        <li>Hérault</li>
+                        <li>Ille-et-Vilaine</li>
+                        <li>Indre</li>
+                        <li>Indre-et-Loire</li>
+                        <li>Isère</li>
+                        <li>Jura</li>
+                        <li>La Réunion</li>
+                        <li>Landes</li>
+                        <li>Loir-et-Cher</li>
+                        <li>Loire</li>
+                        <li>Loire-Atlantique</li>
+                        <li>Loiret</li>
+                        <li>Lot</li>
+                        <li>Lot-et-Garonne</li>
+                        <li>Lozère</li>
+                        <li>Maine-et-Loire</li>
+                        <li>Manche</li>
+                        <li>Marne</li>
+                        <li>Martinique</li>
+                        <li>Mayenne</li>
+                        <li>Mayotte</li>
+                        <li>Meurthe-et-Moselle</li>
+                        <li>Meuse</li>
+                        <li>Morbihan</li>
+                        <li>Moselle</li>
+                        <li>Nièvre</li>
+                        <li>Nord</li>
+                        <li>Oise</li>
+                        <li>Orne</li>
+                        <li>Paris</li>
+                        <li>Pas-de-Calais</li>
+                        <li>Puy-de-Dôme</li>
+                        <li>Pyrénées-Atlantiques</li>
+                        <li>Pyrénées-Orientales</li>
+                        <li>Rhône</li>
+                        <li>Saint-Barthélemy</li>
+                        <li>Saint-Martin</li>
+                        <li>Saint-Pierre-Et-Miquelon</li>
+                        <li>Sarthe</li>
+                        <li>Savoie</li>
+                        <li>Saône-et-Loire</li>
+                        <li>Seine-Maritime</li>
+                        <li>Seine-Saint-Denis</li>
+                        <li>Seine-et-Marne</li>
+                        <li>Somme</li>
+                        <li>Tarn</li>
+                        <li>Tarn-et-Garonne</li>
+                        <li>Territoire de Belfort</li>
+                        <li>Val-d'Oise</li>
+                        <li>Val-de-Marne</li>
+                        <li>Var</li>
+                        <li>Vaucluse</li>
+                        <li>Vendée</li>
+                        <li>Vienne</li>
+                        <li>Vosges</li>
+                        <li>Yonne</li>
+                        <li>Yvelines</li>
+                    </ul>
+
+                </div> 
+                
+            </div>
+
+        </div>
+        
+        
+
+
+        <!-- SUBMIT -->
+        <div class="button-container">
+            <div class="submit-button" tabindex="0"> ENVOYER <i class="fa far fa-paper-plane"></i></div>            
+        </div>
+
+        <div class="message">
+            Les champs indiqués par un astérique (<span class="mandatory"> * </span>) sont obligatoires
+        </div>
+
+    </form>
+
+    <footer>
+        <p>Mon adresse électronique servira-t-elle à d'autres envois ?</p>
+        <p> L'adresse que vous nous communiquez reste strictement confidentielle. L'Insee s'engage à utiliser votre adresse uniquement pour envoyer des messages relatifs à votre demande. </p>
+        <p> En savoir plus sur la gestion de vos données et vos droits</p>
+    </footer>
+</body>
+</html>
