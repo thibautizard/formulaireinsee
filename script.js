@@ -55,16 +55,39 @@ inputs.forEach(input => {
             if(emails[0].value !== emails[1].value && emails[0].value && emails[1].value) {
                 emails[1].classList.remove("valid")
                 emails[1].classList.add("invalid")
-            } else if(emails[0].value === emails[1].value ) {
+            } else if(emails[0].value === emails[1].value && emails[1].value) {
                 emails[1].classList.remove("invalid")
                 emails[1].classList.add("valid")
+            } else if(!emails[1].value) {
+                emails[1].classList.remove("invalid")
+                emails[1].classList.remove("valid")
             }
         }
 
         checkAll()
     })
 
-    input.addEventListener("change", () => testInput(input))
+    input.addEventListener("change", () => {
+        testInput(input)
+
+        if(input.classList.contains("email")) {
+
+            const emails = Array.from(inputs).filter(input => input.classList.contains("email"))
+
+            if(emails[0].value !== emails[1].value && emails[0].value && emails[1].value) {
+                emails[1].classList.remove("valid")
+                emails[1].classList.add("invalid")
+            } else if(emails[0].value === emails[1].value && emails[1].value) {
+                emails[1].classList.remove("invalid")
+                emails[1].classList.add("valid")
+            } else if(!emails[1].value) {
+                emails[1].classList.remove("invalid")
+                emails[1].classList.remove("valid")
+            }
+        }
+
+        checkAll()
+    })
 
 })
 
