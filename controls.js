@@ -1,6 +1,6 @@
 const button = document.querySelector(".submit-button")
 
-const testInput = input => {
+const changeInput = input => {
 
     switch(input.id) {
 
@@ -11,8 +11,10 @@ const testInput = input => {
 
         
         case "telephone" : 
-            const country = document.querySelector(".box-value--country span").textContent
-            if((/^0[0-9]{9}$/.test(input.value.replace(/[\s\.]/g,'')) && country === '🇫🇷') || (/\d/.test(input.value.replace(/\s/g,'')) && country !== '🇫🇷')) {input.classList.remove("invalid"); input.classList.add("valid")}
+
+            const etranger = document.querySelector("#departement span").textContent === "Étranger"
+            if(/^0[0-9]{9}$/.test(input.value.replace(/[\s\.]/g,'')) && !etranger) {input.classList.remove("invalid"); input.classList.add("valid")}
+            else if(etranger && /\d+/.test(input.value.replace(/[\s\.]/g,''))) {input.classList.remove("invalid"); input.classList.add("valid")}
             else if(!input.value) {input.classList.remove("valid"); input.classList.remove("invalid")}
             else {input.classList.remove("valid"); input.classList.add("invalid")}
             break;
@@ -35,6 +37,21 @@ const testInput = input => {
 
     checkAll()
 
+}
+
+const replaceInput = (input, key) => {
+
+    switch (input.id) {
+        case "telephone":
+            if(/[0-9]/.test(key)) input.value += key
+            break;
+    
+        default:
+            input.value += key
+            break;
+    }
+
+    changeInput(input)
 }
 
 const checkAll = () => {
@@ -100,5 +117,6 @@ button.addEventListener("click", () => {
 
 export {
     checkAll,
-    testInput
+    changeInput, 
+    replaceInput
 }

@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
-$widthInputs: 450px;
+
 $mainWidth: 1100px;
+$widthInputs: 300px;
 $darkBlue:rgb(30, 65, 118);
 $darkGrey: rgb(82,84,87);
 $lightGrey: rgb(224,224,224);
 $red: rgb(197, 45, 45);
+
+
+@mixin mobile-only {
+    @media screen and (max-width: 600px) {
+        @content
+    }
+}

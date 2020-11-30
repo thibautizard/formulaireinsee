@@ -141,41 +141,7 @@
                 </div> 
                 
             </div>
-
-            <!-- TELEPHONE -->
-            <div class="form-group from-group--telephone optional">
-
-                <label for="telephone"> Votre numéro de téléphone : </label>
-
-                <div id="telephone" class="multiple">
-
-                    <div class="custom-select custom-select--telephone">
-
-                        <!-- CHAMP -->
-                        <div class="box box-value box-value--country box-value--no-border" tabindex="0">
-                            <span>🇫🇷</span>
-                            <div class="button"> <i class="fa fas fa-chevron-down"></i> </div>
-                            
-                        </div>
     
-                        <!-- MODALITÉS -->
-                        <ul>
-                            <li>🇫🇷</li>
-                            <li>🇺🇸</li>
-                        </ul>
-    
-                    </div>
-
-                    <div class="input-container">
-                        <input type="text" name="telephone" id="telephone" placeholder="Votre numéro de téléphone" autocomplete="tel">
-                        <div class="error-message"> Le numéro de téléphone renseigné est invalide </div>
-                        <i class="fas fa fa-check-circle"></i>
-                        <i class="fas fa fa-times-circle"></i>
-                    </div>
-                </div> 
-                
-            </div>
-
             <!-- IDENTITE -->
             <div class="form-group from-group--identite">
 
@@ -218,7 +184,7 @@
                     </div>
 
                     <ul class="long">
-                        <li>Etranger</li>
+                        <li>Étranger</li>
                         <li>Ain</li>
                         <li>Aisne</li>
                         <li>Allier</li>
@@ -329,6 +295,52 @@
                 
             </div>
 
+            <!-- TELEPHONE -->
+            <div class="form-group optional">
+
+                <label for="telephone"> Votre numéro de téléphone : </label>
+
+                    <div class="input-container">
+                        <input type="text" name="telephone" id="telephone" placeholder="Votre numéro de téléphone" autocomplete="tel">
+                        <div class="error-message"> Le numéro de téléphone doit commencer par 0 et comporter 10 chiffres </div>
+                        <i class="fas fa fa-check-circle"></i>
+                        <i class="fas fa fa-times-circle"></i>
+                    </div>
+
+            
+            <!-- <div class="form-group from-group--telephone optional">
+
+                <label for="telephone"> Votre numéro de téléphone : </label>
+
+                <div id="telephone" class="multiple">
+
+                    <div class="custom-select custom-select--telephone">
+
+                        <div class="box box-value box-value--country box-value--no-border" tabindex="0">
+                            <span>🇫🇷</span>
+                            <div class="button"> <i class="fa fas fa-chevron-down"></i> </div>
+                            
+                        </div>
+    
+                        <ul>
+                            <li>🇫🇷</li>
+                            <li>🇺🇸</li>
+                        </ul>
+    
+                    </div>
+
+                    <div class="input-container">
+                        <input type="text" name="telephone" id="telephone" placeholder="Votre numéro de téléphone" autocomplete="tel">
+                        <div class="error-message"> Le numéro de téléphone renseigné est invalide </div>
+                        <i class="fas fa fa-check-circle"></i>
+                        <i class="fas fa fa-times-circle"></i>
+                    </div>
+                </div>  -->
+                
+            </div>
+                
+            </div>
+
         </div>
         
         
@@ -346,7 +358,7 @@
     </form>
 
     <footer>
-        <p>Mon adresse électronique servira-t-elle à d'autres envois ?</p>
+        <p> Mon adresse électronique servira-t-elle à d'autres envois ? </p>
         <p> L'adresse que vous nous communiquez reste strictement confidentielle. L'Insee s'engage à utiliser votre adresse uniquement pour envoyer des messages relatifs à votre demande. </p>
         <p> En savoir plus sur la gestion de vos données et vos droits</p>
     </footer>

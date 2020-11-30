@@ -1,4 +1,5 @@
-import { testInput, checkAll } from './controls.js'
+import { changeInput, checkAll, replaceInput } from './controls.js'
+import { switchLangage } from './language.js'
 
 const formGroups = document.querySelectorAll(".form-group")
 
@@ -16,12 +17,21 @@ selects.forEach(select => {
     const boxValue = select.querySelector(".box-value")
     const modalities = select.querySelectorAll("li")
     const boxValueMessage = select.querySelector(".box-value span")
+
     
     modalities.forEach(modality => modality.addEventListener("click", () => {
+
+        
 
         // Replace text by modality selected
         boxValueMessage.textContent = modality.textContent
         boxValue.classList.toggle("expand")
+
+        // Check telephone field related to department
+        if(select.id === "departement") {
+            let input = document.querySelector("input#telephone")
+            changeInput(input)
+        }
 
         // Switch current modality to selected
         modalities.forEach(modality => modality.classList.remove("selected"))
@@ -42,9 +52,9 @@ selects.forEach(select => {
 
 inputs.forEach(input => {
 
-    input.addEventListener("input", () => {
+    input.addEventListener("change", () => {
 
-        testInput(input)
+        changeInput(input)
 
         if(input.classList.contains("email")) {
 
@@ -65,25 +75,9 @@ inputs.forEach(input => {
         checkAll()
     })
 
-    input.addEventListener("change", () => {
-
-        testInput(input)
-
-        if(input.classList.contains("email")) {
-
-            const emails = Array.from(inputs).filter(input => input.classList.contains("email"))
-
-            if(emails[0].value !== emails[1].value && emails[0].value && emails[1].value) {
-                emails[1].classList.remove("valid")
-                emails[1].classList.add("invalid")
-            } else if(emails[0].value === emails[1].value && emails[1].value) {
-                emails[1].classList.remove("invalid")
-                emails[1].classList.add("valid")
-            } else if(!emails[1].value) {
-                emails[1].classList.remove("invalid")
-                emails[1].classList.remove("valid")
-            }
-        }
+    input.addEventListener("keypress", (e) => {
+        e.preventDefault()
+        replaceInput(input, e.key)
     })
 
 })
