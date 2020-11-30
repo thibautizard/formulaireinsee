@@ -1,0 +1,7 @@
+function switchLangage() {
+
+}
+
+export {
+    switchLangage
+}
