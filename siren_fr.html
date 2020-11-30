@@ -40,37 +40,20 @@
 
             <h2> Votre demande </h2>
 
-            <!-- CATEGORIE -->
-            <div class="form-group">
+            <!-- SIREN -->
+            <div class="form-group from-group--siren">
 
-                <label for="categorie"> Type de demande <span class="mandatory"> * </span> : </label>
+                <label for="siren"> Votre SIREN <span class="mandatory"> * </span> : </label>
 
-                <div class="custom-select" id="categorie">
-
-                    <!-- CHAMP -->
-                    <div class="box box-value" tabindex="0">
-                        <span>Choisissez votre type de demande</span>
-                        <div class="button"> <i class="fa fas fa-chevron-down"></i> </div>
-                        
-                        <i class="fas fa fa-check-circle"></i>
-                        <i class="fas fa fa-times-circle"></i>
-                        
-                    </div>
-
-                    <!-- MODALITÉS -->
-                    <ul>
-                        <li>Demande d'information statistique</li>
-                        <li filter="informations">Demande d'informations sur une enquête en cours</li>
-                        <li filter="dysfonctionnement">Signaler un dysfonctionnement</li>
-                        <li>Déposer une réclamation</li>
-                        <li>Faire une suggestion</li>
-                        <li>Faire une autre demande</li>
-                    </ul>
-
-                </div>
+                <div class="input-container" id="siren">
+                    <input type="text" class="siren" name="siren" id="siren" placeholder="Votre SIREN">
+                    <div class="error-message error-message--siren"> Votre numéro SIREN est composé de 9 chiffres </div>
+                    <i class="fas fa fa-check-circle"></i>
+                    <i class="fas fa fa-times-circle"></i>
+                </div> 
                 
             </div>
-                 
+
             <!-- DYSFONCTIONNEMENT - PAGE PROBLEME -->
             <div class="form-group form-group--dysfonctionnement page subfilter">
 

@@ -9,12 +9,67 @@
 }
 
 .banner {
-    background-image: url('./banner.png');
+
+    &--fr {background-image: url('./banner.png')}
+    &--en {background-image: url('./banner-en.png')}
+
     background-size: cover;
     height: 150px;
     width: $mainWidth;
     margin-top: 20px;
 
+}
+
+.link-bar {
+    position:fixed;
+    top:20px;
+    left:20px;
+    display: flex;
+    flex-flow:column wrap;
+    border-radius: 10px;
+    min-width: 10vw;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.25), 
+                                     0 2px 2px rgba(0,0,0,0.20), 
+                                     0 4px 4px rgba(0,0,0,0.15), 
+                                     0 8px 8px rgba(0,0,0,0.10),
+                                     0 16px 16px rgba(0,0,0,0.05);
+    background-color: #FFFFFF;
+    /* For WebKit (Safari, Chrome, etc) */
+    background: #FFFFFF -webkit-gradient(linear, left top, right bottom, from(#8dabc9), to(#FFFFFF)) no-repeat;
+    /* Mozilla,Firefox/Gecko */
+    background: #FFFFFF -moz-linear-gradient(top, #42566A, #FFFFFF) no-repeat;
+    /* IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#42566A, endColorstr=#FFFFFF) no-repeat;
+    /* IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#42566A, endColorstr=#42566A)" no-repeat;
+
+
+
+    &__section {
+        display: flex;
+        flex-flow:column wrap;
+        margin:10px;
+
+    }
+
+    &__link {
+        text-decoration: none;
+        padding: 4px;
+        color:black;
+        transition: all .1s linear;
+        font-weight: bold;
+
+        &:hover {
+            background-color: #8ab8e5;
+        }
+    }
+
+    &__title {
+        font-size:20px;
+        color:black;
+        font-weight: bold;
+        padding:12px;
+    }
 }
 
 body {
@@ -28,17 +83,18 @@ footer {
     width: $mainWidth;
     margin-bottom: 30px;
     padding: 0 20px;
-    p:nth-child(1) {
+    
+    .footer__title {
         font-weight: bold;
         margin-bottom: 10px;
     }
 
-    p:nth-child(2) {
+    .footer__body {
         line-height: 22px;
-        margin-bottom: 3px;
+        margin-bottom: 10px;
     }
 
-    p:nth-child(3) {
+    .footer__link {
         line-height: 22px;
         margin-bottom: 3px;
         font-weight:700;

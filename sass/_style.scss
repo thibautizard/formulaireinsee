@@ -29,7 +29,7 @@ form {
     .fa-check-circle, .fa-times-circle {
             &:not(.fa-times-circle) {color:green;}
             &:not(.fa-check-circle) {color:$red;}
-            right:-20px;
+            right:-7%;
             font-size:20px;
             position:absolute;
             display: none;

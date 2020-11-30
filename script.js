@@ -89,6 +89,7 @@ textarea.addEventListener("input", e => {
     const remaining = e.target.parentNode.querySelector(".remaining")
     const newCount = e.target.value.length
     remaining.textContent = `${newCount} caractère${Math.abs(newCount) === 1 || newCount === 0 ? "" : "s"} sur 2 000 caractères autorisés`
+    if(remaining.classList.contains("remaining--en")) remaining.textContent = `${newCount} character${Math.abs(newCount) === 1 || newCount === 0 ? "" : "s"} out of 2 000 characters allowed`
     if(newCount >= 2000) remaining.style.color = "red"
     else remaining.style.color = "black"
 
@@ -97,7 +98,9 @@ textarea.addEventListener("input", e => {
     checkAll()
 })
 
-textarea.addEventListener("change", e => checkAll())
+textarea.addEventListener("change", e => {
+    checkAll()
+})
 
 
 // BOX VALUES
@@ -111,8 +114,9 @@ boxValues.forEach(boxValue => boxValue.addEventListener("click", _ => boxValue.c
 const displayFields = (select, modality) => {
 
     if(select.id === "categorie") {
-        switch(modality.textContent) {
-            case "Demande d'informations sur une enquête en cours" :
+
+        switch(modality.getAttribute("filter")) {
+            case "informations" :
             Array.from(formGroups).filter(formGroup => formGroup.classList.contains("form-group--informations"))
                                   .forEach(formGroup => formGroup.style.display = "flex")
             
@@ -121,7 +125,7 @@ const displayFields = (select, modality) => {
             
             return
 
-            case "Signaler un dysfonctionnement" : 
+            case "dysfonctionnement" : 
             Array.from(formGroups).filter(formGroup => formGroup.classList.contains("form-group--dysfonctionnement"))
                                   .forEach(formGroup => formGroup.style.display = "flex")
 

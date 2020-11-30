@@ -4,8 +4,18 @@ const changeInput = input => {
 
     switch(input.id) {
 
+        case "siren" :
+            if(/^[0-9]{9}$/.test(input.value)) {input.classList.remove("invalid"); input.classList.add("valid")}
+            else {input.classList.remove("valid"); input.classList.add("invalid")}
+        break;
+
         case "email" :
             if(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/.test(input.value)) {input.classList.remove("invalid"); input.classList.add("valid")}
+            else {input.classList.remove("valid"); input.classList.add("invalid")}
+            break;
+        
+        case "email-confirmation" :
+            if(input.value === document.querySelector("input#email").value) {input.classList.remove("invalid"); input.classList.add("valid")}
             else {input.classList.remove("valid"); input.classList.add("invalid")}
             break;
 
@@ -15,7 +25,6 @@ const changeInput = input => {
             const etranger = document.querySelector("#departement span").textContent === "Étranger"
             if(/^0[0-9]{9}$/.test(input.value.replace(/[\s\.]/g,'')) && !etranger) {input.classList.remove("invalid"); input.classList.add("valid")}
             else if(etranger && /\d+/.test(input.value.replace(/[\s\.]/g,''))) {input.classList.remove("invalid"); input.classList.add("valid")}
-            else if(!input.value) {input.classList.remove("valid"); input.classList.remove("invalid")}
             else {input.classList.remove("valid"); input.classList.add("invalid")}
             break;
         
@@ -35,6 +44,8 @@ const changeInput = input => {
             break;
     }
 
+    if(!input.value) {input.classList.remove("valid"); input.classList.remove("invalid")}
+
     checkAll()
 
 }
@@ -42,8 +53,12 @@ const changeInput = input => {
 const replaceInput = (input, key) => {
 
     switch (input.id) {
-        case "telephone":
-            if(/[0-9]/.test(key)) input.value += key
+        case "telephone" :
+            if(/[0-9]/.test(key) && input.value.length < 10) input.value += key
+            break;
+        
+        case "siren" :
+            if(/[0-9]/.test(key) && input.value.length < 9) input.value += key
             break;
     
         default:
@@ -64,6 +79,8 @@ const checkAll = () => {
 
 
 button.addEventListener("click", () => {
+
+    const lang = document.querySelector("html").getAttribute("lang")
 
     if(button.classList.contains("active")) {
 
@@ -93,7 +110,16 @@ button.addEventListener("click", () => {
             console.log(textArea.parentNode.querySelector(".remaning"))
         })
 
-        alert("Votre demande a bien été envoyée ! Vous recevrez une réponse à votre demande d'information dans un délai de quelques jours ouvrés.")
+        switch (lang) {
+            case "fr":
+                alert("Votre demande a bien été envoyée ! Vous recevrez une réponse à votre demande d'information dans un délai de quelques jours ouvrés.")
+                break;
+        
+            case "en":
+                alert("Your request has been sent ! You will receive a response to your request for information within a few working days.")
+                break;
+        }
+
     }
 
     else {
@@ -102,7 +128,16 @@ button.addEventListener("click", () => {
                                   .map(field => field.querySelector("textarea, input[type=email], input[type=text], .box-value"))
                                   
 
-        alert("Merci de remplir tous les champs obligatoires pour que nous puissions traiter votre demande")
+        switch (lang) {
+            case "fr":
+                alert("Merci de remplir tous les champs obligatoires pour que nous puissions traiter votre demande.")
+                break;
+        
+            case "en":
+                alert("Please fill in all the required fields so that we can process your request.")
+                break;
+        }
+        
 
         fieldsToHighlight.forEach(field => {
 

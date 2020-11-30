@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
 
 <body>
     <!-- BANNIÈRE -->
-    <div class="banner banner--fr"></div>
+    <div class="banner banner--en"></div>
 
     <!-- CHOIX FORMULAIRE -->
     <div class="link-bar">
@@ -38,48 +38,31 @@
         <!-- PARTIE DEMANDE -->
         <div class="form-part">
 
-            <h2> Votre demande </h2>
+            <h2> Your request </h2>
 
-            <!-- CATEGORIE -->
-            <div class="form-group">
+            <!-- SIREN -->
+            <div class="form-group from-group--siren">
 
-                <label for="categorie"> Type de demande <span class="mandatory"> * </span> : </label>
+                <label for="siren"> SIREN <span class="mandatory"> * </span> : </label>
 
-                <div class="custom-select" id="categorie">
-
-                    <!-- CHAMP -->
-                    <div class="box box-value" tabindex="0">
-                        <span>Choisissez votre type de demande</span>
-                        <div class="button"> <i class="fa fas fa-chevron-down"></i> </div>
-                        
-                        <i class="fas fa fa-check-circle"></i>
-                        <i class="fas fa fa-times-circle"></i>
-                        
-                    </div>
-
-                    <!-- MODALITÉS -->
-                    <ul>
-                        <li>Demande d'information statistique</li>
-                        <li filter="informations">Demande d'informations sur une enquête en cours</li>
-                        <li filter="dysfonctionnement">Signaler un dysfonctionnement</li>
-                        <li>Déposer une réclamation</li>
-                        <li>Faire une suggestion</li>
-                        <li>Faire une autre demande</li>
-                    </ul>
-
-                </div>
+                <div class="input-container" id="siren">
+                    <input type="text" class="siren" name="siren" id="siren" placeholder="Votre SIREN">
+                    <div class="error-message error-message--siren"> Your SIREN number must be 9 digits </div>
+                    <i class="fas fa fa-check-circle"></i>
+                    <i class="fas fa fa-times-circle"></i>
+                </div> 
                 
             </div>
                  
             <!-- DYSFONCTIONNEMENT - PAGE PROBLEME -->
             <div class="form-group form-group--dysfonctionnement page subfilter">
 
-                <label for="dysfonctionnement"> Adresse de la page ayant un problème <span class="mandatory"> * </span> : </label>
+                <label for="dysfonctionnement"> Link on the page with malfunction <span class="mandatory"> * </span> : </label>
 
                 <div id="dysfonctionnement" class="custom-select">
 
-                    <input type="text" name="dysfonctionnement" id="dysfonctionnement" placeholder="Adresse de la page" autocomplete="off">
-                    <div class="error-message error-message--mail"> Vous devez indiquer une page commençant par https://www.insee.fr/ </div>
+                    <input type="text" name="dysfonctionnement" id="dysfonctionnement" placeholder="Web page adress" autocomplete="off">
+                    <div class="error-message error-message--mail"> You must report a page beginning with https://www.insee.fr/ </div>
                     <i class="fas fa fa-check-circle"></i>
                     <i class="fas fa fa-times-circle"></i>
                 </div> 
@@ -89,10 +72,10 @@
             <!-- OBTENIR INFORMATIONS ENQUÊTE - NOM ENQUÊTE -->
             <div class="form-group form-group--informations enquete subfilter">
 
-                <label for="informations-enquete"> Nom de l'enquête <span class="mandatory"> * </span> : </label>
+                <label for="informations-enquete"> Survey name <span class="mandatory"> * </span> : </label>
 
                 <div id="informations-enquete" class="custom-select">
-                    <input type="text" name="informations-enquete" id="informations-enquete" placeholder="Nom de l'enquête" autocomplete="off">
+                    <input type="text" name="informations-enquete" id="informations-enquete" placeholder="Survey name" autocomplete="off">
                     <i class="fas fa fa-check-circle"></i>
                     <i class="fas fa fa-times-circle"></i>
                 </div> 
@@ -102,10 +85,10 @@
             <!-- OBTENIR INFORMATIONS ENQUÊTE - IDENTIFIANT -->
             <div class="form-group form-group--informations identifiant optional subfilter">
 
-                <label for="informations-identifiant"> Votre identifiant (si vous en disposez) : </label>
+                <label for="informations-identifiant"> ID access (if you have one) : </label>
 
                 <div id="informations-identifiant" class="custom-select">
-                    <input type="text" name="informations-identifiant" id="informations-identifiant" placeholder="Votre identifiant">
+                    <input type="text" name="informations-identifiant" id="informations-identifiant" placeholder="ID access">
                     <i class="fas fa fa-check-circle"></i>
                     <i class="fas fa fa-times-circle"></i>
                 </div> 
@@ -115,10 +98,10 @@
             <!-- MESSAGE -->
             <div class="form-group form-group--message">
 
-                <label for="message"> Votre message <span class="mandatory"> * </span> : </label>
+                <label for="message"> Your message <span class="mandatory"> * </span> : </label>
                 <div class="grow-wrap">
                     <textarea name="message" id="message" rows="6"></textarea>
-                    <p class="remaining"> 0 caractère sur 2 000 caractères autorisés </p>
+                    <p class="remaining remaining--en"> 0 character out of 2 000 characters allowed </p>
                 </div>
                 
 
@@ -128,16 +111,16 @@
 
         <div class="form-part">
 
-            <h2> Vos coordonnées </h2>
+            <h2> Contact information </h2>
 
             <!-- MAIL -->
             <div class="form-group from-group--email">
 
-                <label for="email"> Votre adresse mail <span class="mandatory"> * </span> : </label>
+                <label for="email"> Your email address <span class="mandatory"> * </span> : </label>
 
                 <div id="email">
-                    <input type="text" class="email" name="email" id="email" placeholder="Votre adresse mail (exemple@domaine.fr)">
-                    <div class="error-message error-message--mail"> Votre adresse mail doit être au format suivant : exemple@domaine.com </div>
+                    <input type="text" class="email" name="email" id="email" placeholder="Your email address (example@domain.com)">
+                    <div class="error-message error-message--mail"> Your email address must be in the following format : example@domain.com </div>
                     <i class="fas fa fa-check-circle"></i>
                     <i class="fas fa fa-times-circle"></i>
                 </div> 
@@ -147,10 +130,10 @@
             <!-- MAIL CONFIRMATION-->
             <div class="form-group from-group--email-confirmation">
 
-                <label for="email-confirmation"> Confirmez votre adresse mail <span class="mandatory"> * </span> : </label>
+                <label for="email-confirmation"> Confirm your email address <span class="mandatory"> * </span> : </label>
 
                 <div id="email-confirmation">
-                    <input type="text"  class="email" name="email-confirmation" id="email-confirmation" placeholder="Confirmez votre adresse mail">
+                    <input type="text"  class="email" name="email-confirmation" id="email-confirmation" placeholder="Confirm your email address">
                     <div class="error-message error-message--mail-similar"> Les deux adresses ne correspondent pas </div>
                     <i class="fas fa fa-check-circle"></i>
                     <i class="fas fa fa-times-circle"></i>
@@ -161,24 +144,24 @@
             <!-- IDENTITE -->
             <div class="form-group from-group--identite">
 
-                <label for="identite"> Vous êtes <span class="mandatory"> * </span> : </label>
+                <label for="identite"> You are <span class="mandatory"> * </span> : </label>
 
                 <div id="identite" class="custom-select">
 
                     <div class="box-value" tabindex="0">
-                        <span>Choisissez un type de public</span>
+                        <span>Choose a type of public</span>
                         <div class="button"> <i class="fa fas fa-chevron-down"></i> </div>
                         <i class="fas fa fa-check-circle"></i>
                         <i class="fas fa fa-times-circle"></i>
                     </div>
 
                     <ul>
-                        <li> Une administration, une collectivité locale, un service public </li>
-                        <li> Une entreprise </li>
-                        <li> Une association </li>
-                        <li> Un enseignant ou un étudiant </li>
-                        <li> Un particulier </li>
-                        <li> Autre </li>
+                        <li> An administration, a local authority, a public service </li>
+                        <li> A company </li>
+                        <li> An association </li>
+                        <li> A teacher or student </li>
+                        <li> A particular </li>
+                        <li> Other </li>
                     </ul>
 
                 </div> 
@@ -188,19 +171,19 @@
             <!-- DEPARTEMENT -->
             <div class="form-group from-group--departement">
 
-                <label for="departement"> Département de votre résidence ou de votre implantation <span class="mandatory"> * </span> : </label>
+                <label for="departement"> Department (French region) of your residence or your location <span class="mandatory"> * </span> : </label>
 
                 <div id="departement" class="custom-select">
 
                     <div class="box-value" tabindex="0">
-                        <span>Choisissez votre département</span>
+                        <span>Choose your department</span>
                         <div class="button"> <i class="fa fas fa-chevron-down"></i> </div>
                         <i class="fas fa fa-check-circle"></i>
                         <i class="fas fa fa-times-circle"></i>
                     </div>
 
                     <ul class="long">
-                        <li>Étranger</li>
+                        <li>Foreign</li>
                         <li>Ain</li>
                         <li>Aisne</li>
                         <li>Allier</li>
@@ -314,11 +297,11 @@
             <!-- TELEPHONE -->
             <div class="form-group optional">
 
-                <label for="telephone"> Votre numéro de téléphone : </label>
+                <label for="telephone"> Your phone number </label>
 
                     <div class="input-container">
-                        <input type="text" name="telephone" id="telephone" placeholder="Votre numéro de téléphone" autocomplete="tel">
-                        <div class="error-message"> Le numéro de téléphone doit commencer par 0 et comporter 10 chiffres </div>
+                        <input type="text" name="telephone" id="telephone" placeholder="Your phone number" autocomplete="tel">
+                        <div class="error-message"> The phone number must start with 0 and be 10 digits long </div>
                         <i class="fas fa fa-check-circle"></i>
                         <i class="fas fa fa-times-circle"></i>
                     </div>
@@ -364,19 +347,24 @@
 
         <!-- SUBMIT -->
         <div class="button-container">
-            <div class="submit-button" tabindex="0"> ENVOYER <i class="fa far fa-paper-plane"></i></div>            
+            <div class="submit-button" tabindex="0"> SEND <i class="fa far fa-paper-plane"></i></div>            
         </div>
 
         <div class="message">
-            Les champs indiqués par un astérique (<span class="mandatory test"> * </span>) sont obligatoires
+            All fields marked with an asterisk (<span class="mandatory test"> * </span>) are required.
         </div>
 
     </form>
 
     <footer>
-        <p class="footer__title"> Mon adresse électronique servira-t-elle à d'autres envois ? </p>
-        <p class="footer__body"> L'adresse que vous nous communiquez reste strictement confidentielle. L'Insee s'engage à utiliser votre adresse uniquement pour envoyer des messages relatifs à votre demande. </p>
-        <p class="footer__link"> En savoir plus sur la gestion de vos données et vos droits</p>
+        <p class="footer__title"> Will my e-mail address serve other mailings ? </p>
+        <p class="footer__body"> The address you give us is strictly confidential. INSEE undertakes to use your address only to send messages relating to your request. </p>
+        
+        <p class="footer__title"> Rights of rectification</p>
+        <p> Law No. 78-17 of 6 January 1978 relating to data, files and freedoms, guarantees you <span class="footer__link"> a right of access and rectification </span> 
+            for information about them.
+        </p>
+        
     </footer>
 </body>
 </html>
