@@ -3,18 +3,17 @@ const button = document.querySelector(".submit-button")
 const testInput = input => {
 
     switch(input.id) {
+
         case "email" :
             if(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/.test(input.value)) {input.classList.remove("invalid"); input.classList.add("valid")}
             else {input.classList.remove("valid"); input.classList.add("invalid")}
             break;
 
-        case "email-confirmation" :
-            if(input.value.length > 0 && /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/.test(input.value)) {input.classList.remove("invalid"); input.classList.add("valid")}
-            else {input.classList.remove("valid"); input.classList.add("invalid")}
-            break;
         
         case "telephone" : 
-            if(/^0[0-9]{9}$/.test(input.value.replace(/\s/g,''))) {input.classList.remove("invalid"); input.classList.add("valid")}
+            const country = document.querySelector(".box-value--country span").textContent
+            if((/^0[0-9]{9}$/.test(input.value.replace(/[\s\.]/g,'')) && country === '🇫🇷') || (/\d/.test(input.value.replace(/\s/g,'')) && country !== '🇫🇷')) {input.classList.remove("invalid"); input.classList.add("valid")}
+            else if(!input.value) {input.classList.remove("valid"); input.classList.remove("invalid")}
             else {input.classList.remove("valid"); input.classList.add("invalid")}
             break;
         
@@ -83,9 +82,16 @@ button.addEventListener("click", () => {
     else {
         const fieldsToHighlight = Array.from(document.querySelectorAll(".form-group"))
                                   .filter(field => !field.classList.contains("optional"))
-
+                                  .map(field => field.querySelector("textarea, input[type=email], input[type=text], .box-value"))
+                                  
 
         alert("Merci de remplir tous les champs obligatoires pour que nous puissions traiter votre demande")
+
+        fieldsToHighlight.forEach(field => {
+
+            field.classList.add("invalid")
+
+        })
         
     }
 

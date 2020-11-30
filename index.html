@@ -9,14 +9,17 @@
     <title>Contact | Insee</title>
 
     <script src="script.js" type="module" defer></script>
+
 </head>
+
 <body>
-    <div class="banner">
+    <!-- BANNIÈRE -->
+    <div class="banner"></div>
 
-    </div>
-
+    <!-- FORMULAIRE -->
     <form action="" id="form">
 
+        <!-- PARTIE DEMANDE -->
         <div class="form-part">
 
             <h2> Votre demande </h2>
@@ -26,15 +29,19 @@
 
                 <label for="categorie"> Type de demande <span class="mandatory"> * </span> : </label>
 
-                <div id="categorie" class="custom-select">
+                <div class="custom-select">
 
+                    <!-- CHAMP -->
                     <div class="box box-value" tabindex="0">
                         <span>Choisissez votre type de demande</span>
-                        <div class="button"> <i class="fa fas fa-chevron-up"></i> </div>
+                        <div class="button"> <i class="fa fas fa-chevron-down"></i> </div>
+                        
                         <i class="fas fa fa-check-circle"></i>
                         <i class="fas fa fa-times-circle"></i>
+                        
                     </div>
 
+                    <!-- MODALITÉS -->
                     <ul>
                         <li>Demande d'information statistique</li>
                         <li>Demande d'informations sur une enquête en cours</li>
@@ -54,6 +61,7 @@
                 <label for="dysfonctionnement"> Adresse de la page ayant un problème <span class="mandatory"> * </span> : </label>
 
                 <div id="dysfonctionnement" class="custom-select">
+
                     <input type="text" name="dysfonctionnement" id="dysfonctionnement" placeholder="Adresse de la page" autocomplete="off">
                     <div class="error-message error-message--mail"> Vous devez indiquer une page commençant par https://www.insee.fr/ </div>
                     <i class="fas fa fa-check-circle"></i>
@@ -92,9 +100,11 @@
             <div class="form-group form-group--message">
 
                 <label for="message"> Votre message <span class="mandatory"> * </span> : </label>
-
-                <textarea name="message" id="message" rows="6"></textarea>
-                <p class="remaining"> 0 caractère sur 2 000 caractères autorisés </p>
+                <div class="grow-wrap">
+                    <textarea name="message" id="message" rows="6"></textarea>
+                    <p class="remaining"> 0 caractère sur 2 000 caractères autorisés </p>
+                </div>
+                
 
             </div>
 
@@ -137,11 +147,31 @@
 
                 <label for="telephone"> Votre numéro de téléphone : </label>
 
-                <div id="telephone" class="custom-select">
-                    <input type="text" name="telephone" id="telephone" placeholder="Votre numéro de téléphone" autocomplete="tel">
-                    <div class="error-message"> Le numéro de téléphone renseigné est invalide </div>
-                    <i class="fas fa fa-check-circle"></i>
-                    <i class="fas fa fa-times-circle"></i>
+                <div id="telephone" class="multiple">
+
+                    <div class="custom-select custom-select--telephone">
+
+                        <!-- CHAMP -->
+                        <div class="box box-value box-value--country box-value--no-border" tabindex="0">
+                            <span>🇫🇷</span>
+                            <div class="button"> <i class="fa fas fa-chevron-down"></i> </div>
+                            
+                        </div>
+    
+                        <!-- MODALITÉS -->
+                        <ul>
+                            <li>🇫🇷</li>
+                            <li>🇺🇸</li>
+                        </ul>
+    
+                    </div>
+
+                    <div class="input-container">
+                        <input type="text" name="telephone" id="telephone" placeholder="Votre numéro de téléphone" autocomplete="tel">
+                        <div class="error-message"> Le numéro de téléphone renseigné est invalide </div>
+                        <i class="fas fa fa-check-circle"></i>
+                        <i class="fas fa fa-times-circle"></i>
+                    </div>
                 </div> 
                 
             </div>
@@ -155,7 +185,7 @@
 
                     <div class="box-value" tabindex="0">
                         <span>Choisissez un type de public</span>
-                        <div class="button"> <i class="fa fas fa-chevron-up"></i> </div>
+                        <div class="button"> <i class="fa fas fa-chevron-down"></i> </div>
                         <i class="fas fa fa-check-circle"></i>
                         <i class="fas fa fa-times-circle"></i>
                     </div>
@@ -182,7 +212,7 @@
 
                     <div class="box-value" tabindex="0">
                         <span>Choisissez votre département</span>
-                        <div class="button"> <i class="fa fas fa-chevron-up"></i> </div>
+                        <div class="button"> <i class="fa fas fa-chevron-down"></i> </div>
                         <i class="fas fa fa-check-circle"></i>
                         <i class="fas fa fa-times-circle"></i>
                     </div>
@@ -310,7 +340,7 @@
         </div>
 
         <div class="message">
-            Les champs indiqués par un astérique (<span class="mandatory"> * </span>) sont obligatoires
+            Les champs indiqués par un astérique (<span class="mandatory test"> * </span>) sont obligatoires
         </div>
 
     </form>

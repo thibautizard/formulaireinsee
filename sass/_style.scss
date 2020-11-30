@@ -1,25 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
-
-$widthInputs: 450px;
-$mainWidth: 1100px;
-$darkBlue:rgb(30, 65, 118);
-$darkGrey: rgb(82,84,87);
-$lightGrey: rgb(224,224,224);
-$red: rgb(197, 45, 45);
 
 
-*, *:not(.fa)::after, *:not(.fa)::before {
-    box-sizing: border-box;
-    color:$darkGrey;
-    font-family: 'Open Sans', Arial;
-    font-weight:400;
-    margin:0;
-    padding:0;
-    font-size:14px;
+
+input {
+    height:35px;
 }
-
-
-
 
 input.invalid {
     border: 1px solid $lightGrey;
@@ -30,21 +14,7 @@ input.invalid {
     display: none;
 }
 
-.banner {
-    background-image: url('./banner.png');
-    background-size: cover;
-    height: 150px;
-    width: $mainWidth;
-    margin-top: 20px;
 
-}
-
-body {
-    display:flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    background-color: rgb(247,247,247);
-}
 
 form {
     background-color: white;
@@ -66,7 +36,11 @@ form {
     }
 
     *.valid {
-        .fa-check-circle {display: block}
+
+        .fa-check-circle {
+            display: block
+        }
+
         & ~ .fa-check-circle {
             display: block;
             top:37px;
@@ -74,7 +48,10 @@ form {
     }
 
     *.invalid {
-        .fa-times-circle {display: block}
+        .fa-times-circle {
+            display: block
+        }
+
         & ~ .fa-times-circle {
             display: block;
             top:37px;
@@ -85,7 +62,7 @@ form {
 
     .form-part {
 
-        margin: 0 10px;
+        margin: 25px 10px;
 
         h2 {
             text-transform: uppercase;
@@ -112,7 +89,7 @@ form {
 
         .box{position:relative;}
 
-        .mandatory {color:$red}
+
 
         textarea, input[type=email], input[type=text], .box-value {
             color:black;
@@ -125,7 +102,7 @@ form {
                 font-style: italic;
             }
 
-            &.valid {
+            &.valid:not(.box-value--no-border) {
                 border-bottom: 1.5px solid green;
                 & +.error-message {display:none;}
             }
@@ -200,7 +177,7 @@ form {
 
     }
 
-    .message, .message span {
+    .message {
         font-size:12px;
         color:rgb(153, 153, 153)
     }
@@ -303,7 +280,7 @@ form {
             cursor:pointer;
     
             .fas {
-                transform:rotate(180deg);
+                // transform:rotate(180deg);
                 color:inherit;
             }
         }
@@ -311,35 +288,42 @@ form {
     
 }
 
-footer {
-    width: $mainWidth;
-    margin-bottom: 30px;
-    padding: 0 20px;
-    p:nth-child(1) {
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    p:nth-child(2) {
-        line-height: 22px;
-        margin-bottom: 3px;
-    }
-
-    p:nth-child(3) {
-        line-height: 22px;
-        margin-bottom: 3px;
-        font-weight:700;
-        color:$darkBlue;
-        
-        &:hover {
-            text-decoration: underline;
-            cursor: pointer;
-        }
-    }
-
-
-}
 
 
 
 
+
+
+
+.grow-wrap {
+    /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
+    display: grid;
+    max-width: $widthInputs;
+  }
+  .grow-wrap::after {
+    /* Note the weird space! Needed to preventy jumpy behavior */
+    content: attr(data-replicated-value) " ";
+  
+    /* This is how textarea text behaves */
+    white-space: pre-wrap;
+  
+    /* Hidden from view, clicks, and screen readers */
+    visibility: hidden;
+  }
+  .grow-wrap > textarea {
+    /* You could leave this, but after a user resizes, then it ruins the auto sizing */
+    resize: none;
+  
+    /* Firefox shows scrollbar on growth, you can hide like this. */
+    overflow: hidden;
+  }
+  .grow-wrap > textarea,
+  .grow-wrap::after {
+    /* Identical styling required!! */
+    border: 1px solid black;
+    padding: 0.5rem;
+    font: inherit;
+  
+    /* Place on top of each other */
+    grid-area: 1 / 1 / 2 / 2;
+  }
