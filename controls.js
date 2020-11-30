@@ -12,6 +12,7 @@ const changeInput = input => {
         case "email" :
             if(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/.test(input.value)) {input.classList.remove("invalid"); input.classList.add("valid")}
             else {input.classList.remove("valid"); input.classList.add("invalid")}
+            changeInput(document.querySelector("input#email-confirmation"))
             break;
         
         case "email-confirmation" :
@@ -19,10 +20,8 @@ const changeInput = input => {
             else {input.classList.remove("valid"); input.classList.add("invalid")}
             break;
 
-        
         case "telephone" : 
-
-            const etranger = document.querySelector("#departement span").textContent === "Étranger"
+            const etranger = document.querySelector("#departement span").textContent === "Étranger" || document.querySelector("#departement span").textContent === "Foreign"
             if(/^0[0-9]{9}$/.test(input.value.replace(/[\s\.]/g,'')) && !etranger) {input.classList.remove("invalid"); input.classList.add("valid")}
             else if(etranger && /\d+/.test(input.value.replace(/[\s\.]/g,''))) {input.classList.remove("invalid"); input.classList.add("valid")}
             else {input.classList.remove("valid"); input.classList.add("invalid")}
@@ -45,28 +44,26 @@ const changeInput = input => {
     }
 
     if(!input.value) {input.classList.remove("valid"); input.classList.remove("invalid")}
-
     checkAll()
-
 }
 
-const replaceInput = (input, key) => {
+const controlInput = (input, e) => {
 
+    e.preventDefault()
     switch (input.id) {
         case "telephone" :
-            if(/[0-9]/.test(key) && input.value.length < 10) input.value += key
+            if(/[0-9]/.test(e.key) && input.value.length < 10) input.value += e.key
             break;
         
         case "siren" :
-            if(/[0-9]/.test(key) && input.value.length < 9) input.value += key
+            if(/[0-9]/.test(e.key) && input.value.length < 9) input.value += e.key
             break;
     
         default:
-            input.value += key
+            input.value += e.key
             break;
     }
-
-    changeInput(input)
+    
 }
 
 const checkAll = () => {
@@ -75,6 +72,7 @@ const checkAll = () => {
                                .map(field => field.querySelector(".box-value, input, textarea"))
     if(fieldsToCheck.every(field => field.classList.contains("valid"))) button.classList.add("active")
     else button.classList.remove("active")
+    
 }
 
 
@@ -126,6 +124,7 @@ button.addEventListener("click", () => {
         const fieldsToHighlight = Array.from(document.querySelectorAll(".form-group"))
                                   .filter(field => !field.classList.contains("optional"))
                                   .map(field => field.querySelector("textarea, input[type=email], input[type=text], .box-value"))
+                                  .filter(field => !field.classList.contains("valid"))
                                   
 
         switch (lang) {
@@ -153,5 +152,5 @@ button.addEventListener("click", () => {
 export {
     checkAll,
     changeInput, 
-    replaceInput
+    controlInput
 }

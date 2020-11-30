@@ -1,4 +1,4 @@
-import { changeInput, checkAll, replaceInput } from './controls.js'
+import { changeInput, checkAll, controlInput } from './controls.js'
 import { switchLangage } from './language.js'
 
 const formGroups = document.querySelectorAll(".form-group")
@@ -21,65 +21,27 @@ selects.forEach(select => {
     
     modalities.forEach(modality => modality.addEventListener("click", () => {
 
-        
-
         // Replace text by modality selected
         boxValueMessage.textContent = modality.textContent
         boxValue.classList.toggle("expand")
 
         // Check telephone field related to department
-        if(select.id === "departement") {
-            let input = document.querySelector("input#telephone")
-            changeInput(input)
-        }
+        if(select.id === "departement") changeInput(document.querySelector("input#telephone"))
 
         // Switch current modality to selected
         modalities.forEach(modality => modality.classList.remove("selected"))
         modality.classList.add("selected")
 
-        boxValue.classList.add("valid")
-        boxValue.classList.remove("invalid")
+        boxValue.addAndRemoveClass("valid", "invalid")
         
-
         displayFields(select, modality)
-
-        checkAll()
-        
+        checkAll()      
     }))
 })
 
-// INPUTS
-
 inputs.forEach(input => {
-
-    input.addEventListener("change", () => {
-
-        changeInput(input)
-
-        if(input.classList.contains("email")) {
-
-            const emails = Array.from(inputs).filter(input => input.classList.contains("email"))
-
-            if(emails[0].value !== emails[1].value && emails[0].value && emails[1].value) {
-                emails[1].classList.remove("valid")
-                emails[1].classList.add("invalid")
-            } else if(emails[0].value === emails[1].value && emails[1].value) {
-                emails[1].classList.remove("invalid")
-                emails[1].classList.add("valid")
-            } else if(!emails[1].value) {
-                emails[1].classList.remove("invalid")
-                emails[1].classList.remove("valid")
-            }
-        }
-
-        checkAll()
-    })
-
-    input.addEventListener("keypress", (e) => {
-        e.preventDefault()
-        replaceInput(input, e.key)
-    })
-
+    input.addEventListener("blur", () => changeInput(input))
+    input.addEventListener("keypress", e => controlInput(input, e))
 })
 
 // TEXT AREA
@@ -140,3 +102,17 @@ const displayFields = (select, modality) => {
         }
     }
 }
+
+if (Array.prototype.slice==null) Array.prototype.slice=function(start,end){ 
+    if (start<0) start=this.length+start; //'this' refers to the object to which the prototype is applied 
+    if (end==null) end=this.length;
+    else if (end<0) end=this.length+end;
+    var newArray=[];
+    for (var ct=0,i=start;i<end;i++) newArray[ct++]=this[i];
+    return newArray;
+ }
+
+Object.prototype.addAndRemoveClass=function(classAdd, classRemove){ 
+    this.classList.add(classAdd)
+    this.classList.remove(classRemove)
+ }
