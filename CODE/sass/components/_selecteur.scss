@@ -1,0 +1,98 @@
+.custom-select {
+
+    ul {
+        list-style-type: none;
+        border: 1px solid $lightGrey;
+        width:$widthInputs;
+        visibility:hidden;
+        position: absolute;
+        overflow-y: scroll;
+        max-height:0px;
+        transition: all .35s ease-out;
+        @include subtleShadow;
+        z-index:10;
+        
+        li {
+            padding:10px;
+            color:rgb(52, 103, 174);
+            background-color: rgb(247,247,247);
+            cursor:pointer;
+    
+            &:hover {
+                background-color: #e9edf2;
+            }
+    
+            &.selected {
+                background-color:white;
+            }
+        }
+
+        &.long {
+            scrollbar-color: $darkBlue #e9edf2;
+            scrollbar-width: 12px;
+        }
+
+        &.long::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        &.long::-webkit-scrollbar-track {
+            background-color: #e9edf2; 
+        }
+
+        &.long::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: $darkBlue;
+        }
+    }
+    
+    .box-value {
+
+        width:$widthInputs;
+        padding-left: 7px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height:$heightInputs;
+        cursor: pointer;
+        
+        .button {
+            width:$heightInputs;
+            align-self: stretch;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $lightGrey;
+            transition: background-color .15s linear;
+    
+            .fa {
+                transition: transform .25s ease-in-out;
+                color:inherit;
+            }
+    
+            &:hover {
+                background-color: rgb(245, 197, 68);
+                color:white;
+            }
+        }
+
+
+        // EXPANSION DE LA LISTE
+        &.expand {
+            
+            & ~ ul {
+                max-height:300px;
+                visibility: visible;
+            }
+
+            .button {
+                background-color: rgb(245, 197, 68);
+                color:white;
+                cursor:pointer;
+                .fa {transform:rotate(180deg)}
+            }
+        }
+    
+    }
+    
+}

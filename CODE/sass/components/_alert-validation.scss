@@ -1,0 +1,19 @@
+.alert-validation {
+    width: 90%;
+    
+    margin: 20px 0;
+    padding : 18px;
+    border: 2px solid green;
+    border-radius: 15px;
+    background-color: rgb(241, 252, 241);
+    display:none;
+
+    p {
+        color:green;
+
+        span {
+
+            text-decoration: underline;
+        }
+    }
+}

@@ -1,0 +1,56 @@
+.banniere {
+    width: $mainWidth;
+    height: 150px;
+    margin-top:30px;
+    display: flex;
+
+    .banner-left {
+        width:65%;
+        background: #0f417a;
+        overflow: hidden;
+        position:relative;
+        padding: 22px 20px;
+
+        .contact {
+            color:white;
+            font-size:45px;
+            font-weight: 600;
+        }
+
+        & img {
+            position:absolute;
+            right:-130px;
+            top:42px;
+        }
+    }
+
+    .banner-right {
+        width:35%;
+        background: #0d3970;
+        padding: 15px 20px;
+
+        .services {
+            color:#b0c7ec;
+            font-size:14px;
+            font-weight: 600;
+            margin-bottom:8px;
+        }
+
+        .publication {
+            color: #e4e8ee;
+            font-weight:200;
+            margin-bottom:20px;
+        }
+
+        .imprimer {
+            color:#f2c245;
+            font-weight: 600;
+
+            .fa {
+                color:#f2c245;
+                opacity: 1;
+                margin-right:10px;
+            }
+        }
+    }
+}
