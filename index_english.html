@@ -17,7 +17,7 @@
    <div class="banniere">
     <div class="banner-left">
         <p class="contact">Contact</p>
-        <img src="logo-insee-fond.png"/>
+        <img src="./images/logo-insee-fond.png"/>
     </div>
     <div class="banner-right">
         <p class="services">SERVICES</p>
@@ -28,15 +28,15 @@
 
     <!-- CHOIX FORMULAIRE -->
     <div class="link-bar">
-        <img src="logo-insee-fond.png"/>
+        <img src="./images/logo-insee-fond.png"/>
         <p class="link-bar__title"> FORMULAIRES <i class="far fa fa-map-signs"></i> </p>
 
         <div class="link-bar__section">
+            <a href="./index.html" class="link-bar__link"> • Généraliste 🇫🇷 <i class="far fa fa-list-alt"></i> </a>
             <a href="./index_english.html" class="link-bar__link selected"> • Généraliste 🇬🇧 <i class="far fa fa-list-alt"></i></a>
         </div>
         
         <div class="link-bar__section">
-            <a href="./index.html" class="link-bar__link"> • Généraliste 🇫🇷 <i class="far fa fa-list-alt"></i> </a>
             <a href="./siren_fr.html" class="link-bar__link"> • SIREN 🇫🇷 <i class="far fa fa-list-alt"></i> </a>
             <a href="./siren_en.html" class="link-bar__link"> • SIREN 🇬🇧 <i class="far fa fa-list-alt"></i> </a>
         </div>
@@ -61,12 +61,10 @@
                     <!-- CHAMP -->
                     <div class="box box-value" tabindex="0">
                         <span>Choose a category</span>
-                        <div class="button"> <i class="fa fas fa-chevron-up"></i> </div>
-                        
-                        <i class="fas fa fa-check-circle"></i>
-                        <i class="fas fa fa-times-circle"></i>
-                        
+                        <div class="button"> <i class="fa fas fa-chevron-up"></i> </div>    
                     </div>
+                    <i class="fas fa fa-check-circle"></i>
+                    <i class="fas fa fa-times-circle"></i>
 
                     <!-- MODALITÉS -->
                     <ul>
@@ -162,7 +160,7 @@
 
                 <div id="email-confirmation">
                     <input type="text"  class="email" name="email-confirmation" id="email-confirmation" placeholder="Confirm your email address">
-                    <div class="error-message error-message--mail-similar"> Les deux adresses ne correspondent pas </div>
+                    <div class="error-message error-message--mail-similar"> Adresses don't match </div>
                     <i class="fas fa fa-check-circle"></i>
                     <i class="fas fa fa-times-circle"></i>
                 </div> 
@@ -179,9 +177,9 @@
                     <div class="box-value" tabindex="0">
                         <span>Choose a type of public</span>
                         <div class="button"> <i class="fa fas fa-chevron-up"></i> </div>
-                        <i class="fas fa fa-check-circle"></i>
-                        <i class="fas fa fa-times-circle"></i>
                     </div>
+                    <i class="fas fa fa-check-circle"></i>
+                    <i class="fas fa fa-times-circle"></i>
 
                     <ul>
                         <li> An administration, a local authority, a public service </li>
@@ -206,9 +204,9 @@
                     <div class="box-value" tabindex="0">
                         <span>Choose your department</span>
                         <div class="button"> <i class="fa fas fa-chevron-up"></i> </div>
-                        <i class="fas fa fa-check-circle"></i>
-                        <i class="fas fa fa-times-circle"></i>
                     </div>
+                    <i class="fas fa fa-check-circle"></i>
+                    <i class="fas fa fa-times-circle"></i>
 
                     <ul class="long">
                         <li>Foreign</li>
@@ -325,11 +323,11 @@
             <!-- TELEPHONE -->
             <div class="form-group optional">
 
-                <label for="telephone"> Your phone number </label>
+                <label for="telephone"> Your phone number : </label>
 
                     <div class="input-container">
-                        <input type="text" name="telephone" id="telephone" placeholder="Your phone number" autocomplete="tel">
-                        <div class="error-message"> The phone number must start with 0 and be 10 digits long </div>
+                        <input type="text" name="telephone" id="telephone" placeholder="Your phone number (in France)" autocomplete="tel">
+                        <div class="error-message"> The phone number is invalid </div>
                         <i class="fas fa fa-check-circle"></i>
                         <i class="fas fa fa-times-circle"></i>
                     </div>

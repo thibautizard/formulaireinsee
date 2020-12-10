@@ -5,25 +5,35 @@ const changeInput = input => {
     switch(input.id) {
 
         case "siren" :
+            input.value = input.value.replace(/\D/g,'')
+
             if(/^[0-9]{9}$/.test(input.value)) {input.classList.remove("invalid"); input.classList.add("valid")}
             else {input.classList.remove("valid"); input.classList.add("invalid")}
+            if(input.value.length > 9) {input.value = input.value.slice(0, input.value.length - 1); input.classList.remove("invalid"); input.classList.add("valid")}
         break;
 
         case "email" :
+            input.value = input.value.replace(/[\s]/g,'')
+
             if(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/.test(input.value)) {input.classList.remove("invalid"); input.classList.add("valid")}
             else {input.classList.remove("valid"); input.classList.add("invalid")}
             changeInput(document.querySelector("input#email-confirmation"))
             break;
         
         case "email-confirmation" :
+            input.value = input.value.replace(/[\s]/g,'')
+
             if(input.value === document.querySelector("input#email").value) {input.classList.remove("invalid"); input.classList.add("valid")}
             else {input.classList.remove("valid"); input.classList.add("invalid")}
             break;
 
         case "telephone" : 
+        // alert("test")
             const etranger = document.querySelector("#departement span").textContent === "Étranger" || document.querySelector("#departement span").textContent === "Foreign"
-            if(/^0[0-9]{9}$/.test(input.value.replace(/[\s\.]/g,'')) && !etranger) {input.classList.remove("invalid"); input.classList.add("valid")}
-            else if(etranger && /\d+/.test(input.value.replace(/[\s\.]/g,''))) {input.classList.remove("invalid"); input.classList.add("valid")}
+            input.value = input.value.replace(/\D/g,'')
+
+            if(/^0[0-9]{9}$/.test(input.value) && !etranger) {input.classList.remove("invalid"); input.classList.add("valid")}
+            else if(etranger && /\d+/.test(input.value)) {input.classList.remove("invalid"); input.classList.add("valid")}
             else {input.classList.remove("valid"); input.classList.add("invalid")}
             break;
         
@@ -42,7 +52,8 @@ const changeInput = input => {
             else {input.classList.remove("valid"); input.classList.add("invalid")}
             break;
     }
-
+    
+    
     if(!input.value) {input.classList.remove("valid"); input.classList.remove("invalid")}
     checkAll()
 }
@@ -63,14 +74,23 @@ const controlInput = (input, e) => {
             input.value += e.key
             break;
     }
+
+    checkAll()
     
 }
 
 const checkAll = () => {
-    const fieldsToCheck = Array.from(document.querySelectorAll(".form-group"))
-                               .filter(field => getComputedStyle(field).display !== "none" && !field.classList.contains("optional"))
-                               .map(field => field.querySelector(".box-value, input, textarea"))
-    if(fieldsToCheck.every(field => field.classList.contains("valid"))) button.classList.add("active")
+
+    let fieldsToCheck = Array.from(document.querySelectorAll(".form-group"))
+
+    const fieldsMandatory = fieldsToCheck
+                            .filter(field => getComputedStyle(field).display !== "none" && !field.classList.contains("optional"))
+                            .map(field => field.querySelector(".box-value, input, textarea"))
+    
+    fieldsToCheck = fieldsToCheck
+                    .map(field => field.querySelector(".box-value, input, textarea"))
+
+    if(fieldsToCheck.every(field => !field.classList.contains("invalid")) && fieldsMandatory.every(field => field.classList.contains("valid"))) button.classList.add("active")
     else button.classList.remove("active")
     
 }
@@ -86,6 +106,10 @@ button.addEventListener("click", () => {
                                .filter(field => getComputedStyle(field).display !== "none" && !field.classList.contains("optional"))
                                .map(field => field.querySelector(".box-value, input, textarea"))
         
+        const alert = document.querySelector('.alert-validation')
+        document.querySelector('.alert-validation__mail').textContent = document.querySelector('input#email').value
+        alert.style.display = 'block'
+
         const inputsToEmpty = Array.from(document.querySelectorAll("input"))
         const boxValuesToEmpty = Array.from(document.querySelectorAll(".box-value"))
         const textAreaToEmpty = Array.from(document.querySelectorAll("textarea"))
@@ -117,6 +141,8 @@ button.addEventListener("click", () => {
                 alert("Your request has been sent ! You will receive a response to your request for information within a few working days.")
                 break;
         }
+
+        
 
     }
 

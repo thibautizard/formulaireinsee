@@ -17,7 +17,7 @@
    <div class="banniere">
         <div class="banner-left">
             <p class="contact">Contact</p>
-            <img src="logo-insee-fond.png"/>
+            <img src="./images/logo-insee-fond.png"/>
         </div>
         <div class="banner-right">
             <p class="services">SERVICES</p>
@@ -28,16 +28,16 @@
 
     <!-- CHOIX FORMULAIRE -->
     <div class="link-bar">
-        <img src="logo-insee-fond.png"/>
+        <img src="./images/logo-insee-fond.png"/>
         <p class="link-bar__title"> FORMULAIRES <i class="far fa fa-map-signs"></i> </p>
 
         <div class="link-bar__section">
-            <a href="./siren_fr.html" class="link-bar__link selected"> • SIREN 🇫🇷 <i class="far fa fa-list-alt"></i> </a>
+            <a href="./index.html" class="link-bar__link"> • Généraliste 🇫🇷 <i class="far fa fa-list-alt"></i> </a>
+            <a href="./index_english.html" class="link-bar__link"> • Généraliste 🇬🇧 <i class="far fa fa-list-alt"></i></a>
         </div>
         
         <div class="link-bar__section">
-            <a href="./index.html" class="link-bar__link"> • Généraliste 🇫🇷 <i class="far fa fa-list-alt"></i> </a>
-            <a href="./index_english.html" class="link-bar__link"> • Généraliste 🇬🇧 <i class="far fa fa-list-alt"></i></a>
+            <a href="./siren_fr.html" class="link-bar__link selected"> • SIREN 🇫🇷 <i class="far fa fa-list-alt"></i> </a>
             <a href="./siren_en.html" class="link-bar__link"> • SIREN 🇬🇧 <i class="far fa fa-list-alt"></i> </a>
         </div>
     </div>
@@ -56,7 +56,7 @@
                 <label for="siren"> Votre SIREN <span class="mandatory"> * </span> : </label>
 
                 <div class="input-container" id="siren">
-                    <input type="text" class="siren" name="siren" id="siren" placeholder="Votre SIREN">
+                    <input type="text" class="siren" name="siren" id="siren" placeholder="Votre SIREN (9 chiffres)">
                     <div class="error-message error-message--siren"> Votre numéro SIREN est composé de 9 chiffres </div>
                     <i class="fas fa fa-check-circle"></i>
                     <i class="fas fa fa-times-circle"></i>
@@ -161,9 +161,9 @@
                     <div class="box-value" tabindex="0">
                         <span>Choisissez un type de public</span>
                         <div class="button"> <i class="fa fas fa-chevron-down"></i> </div>
-                        <i class="fas fa fa-check-circle"></i>
-                        <i class="fas fa fa-times-circle"></i>
                     </div>
+                    <i class="fas fa fa-check-circle"></i>
+                    <i class="fas fa fa-times-circle"></i>
 
                     <ul>
                         <li> Une administration, une collectivité locale, un service public </li>
@@ -188,9 +188,9 @@
                     <div class="box-value" tabindex="0">
                         <span>Choisissez votre département</span>
                         <div class="button"> <i class="fa fas fa-chevron-down"></i> </div>
-                        <i class="fas fa fa-check-circle"></i>
-                        <i class="fas fa fa-times-circle"></i>
                     </div>
+                    <i class="fas fa fa-check-circle"></i>
+                    <i class="fas fa fa-times-circle"></i>
 
                     <ul class="long">
                         <li>Étranger</li>
@@ -362,6 +362,11 @@
 
         <div class="message">
             Les champs indiqués par un astérique (<span class="mandatory test"> * </span>) sont obligatoires
+        </div>
+
+        <div class="alert-validation">
+            <p> Votre message a été envoyé avec succès. Vous allez recevoir un accusé de réception à <span class="alert-validation__mail"> </span>.  
+                Attention ! Si vous ne recevez pas rapidement un accusé de réception, vérifier votre boîte de courrier indésirable (spam).</p>
         </div>
 
     </form>

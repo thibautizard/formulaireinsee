@@ -1,5 +1,4 @@
 import { changeInput, checkAll, controlInput } from './controls.js'
-import { switchLangage } from './language.js'
 
 const formGroups = document.querySelectorAll(".form-group")
 
@@ -26,7 +25,9 @@ selects.forEach(select => {
         boxValue.classList.toggle("expand")
 
         // Check telephone field related to department
-        if(select.id === "departement") changeInput(document.querySelector("input#telephone"))
+        if(select.id === "departement") {
+            changeInput(document.querySelector('input#telephone'))
+        }
 
         // Switch current modality to selected
         modalities.forEach(modality => modality.classList.remove("selected"))
@@ -40,8 +41,8 @@ selects.forEach(select => {
 })
 
 inputs.forEach(input => {
-    input.addEventListener("blur", () => changeInput(input))
-    input.addEventListener("keypress", e => controlInput(input, e))
+    input.addEventListener("input", _ => changeInput(input))
+    // input.addEventListener("keypress", e => controlInput(input, e))
 })
 
 // TEXT AREA
@@ -49,18 +50,21 @@ inputs.forEach(input => {
 textarea.addEventListener("input", e => {
     e.target.parentNode.dataset.replicatedValue = e.target.value
     const remaining = e.target.parentNode.querySelector(".remaining")
-    const newCount = e.target.value.length
+    const newCount = e.target.value.trim().length
     remaining.textContent = `${newCount} caractère${Math.abs(newCount) === 1 || newCount === 0 ? "" : "s"} sur 2 000 caractères autorisés`
     if(remaining.classList.contains("remaining--en")) remaining.textContent = `${newCount} character${Math.abs(newCount) === 1 || newCount === 0 ? "" : "s"} out of 2 000 characters allowed`
-    if(newCount >= 2000) remaining.style.color = "red"
+    if(newCount >= 2000) {
+        remaining.style.color = "orange"
+        e.target.value = e.target.value.slice(0, 2000)
+        e.target.parentNode.dataset.replicatedValue = e.target.value
+        remaining.textContent = `2000 caractères sur 2 000 caractères autorisés`
+        if(remaining.classList.contains("remaining--en")) remaining.textContent = `2000 characters out of 2 000 characters allowed`
+    }
     else remaining.style.color = "black"
 
     if(newCount > 0) e.target.classList.add("valid")
+    else e.target.classList.remove("valid")
 
-    checkAll()
-})
-
-textarea.addEventListener("change", e => {
     checkAll()
 })
 
@@ -112,7 +116,7 @@ if (Array.prototype.slice==null) Array.prototype.slice=function(start,end){
     return newArray;
  }
 
-Object.prototype.addAndRemoveClass=function(classAdd, classRemove){ 
+Object.prototype.addAndRemoveClass=function(classAdd, classRemove) { 
     this.classList.add(classAdd)
     this.classList.remove(classRemove)
  }
